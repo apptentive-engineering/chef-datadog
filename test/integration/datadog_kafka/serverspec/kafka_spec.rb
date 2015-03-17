@@ -36,8 +36,8 @@ describe file(AGENT_CONFIG) do
         conf: [
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsBytesOutPerSec\"",
+              domain: "kafka.server",
+              bean: "kafka.server:type=BrokerTopicMetrics,name=BytesOutPerSec",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -48,8 +48,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsBytesInPerSec\"",
+              domain: "kafka.server",
+              bean: "kafka.server:type=BrokerTopicMetrics,name=BytesInPerSec",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -60,8 +60,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsMessagesInPerSec\"",
+              domain: "kafka.server",
+              bean: "kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -72,8 +72,20 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsFailedFetchRequestsPerSec\"",
+              domain: "kafka.server",
+              bean: "kafka.server:type=BrokerTopicMetrics,name=BytesRejectedPerSec",
+              attribute: {
+                MeanRate: {
+                  metric_type: 'gauge',
+                  alias: 'kafka.net.bytes_rejected'
+                }
+              }
+            }
+          },
+          {
+            include: {
+              domain: "kafka.server",
+              bean: "kafka.server:type=BrokerTopicMetrics,name=FailedFetchRequestsPerSec",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -84,8 +96,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsFailedProduceRequestsPerSec\"",
+              domain: "kafka.server",
+              bean: "kafka.server:type=BrokerTopicMetrics,name=FailedProduceRequestsPerSec",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -96,8 +108,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.network\"",
-              bean: "\"kafka.network\":type=\"RequestMetrics\",name=\"Produce-TotalTimeMs\"",
+              domain: "kafka.network",
+              bean: "kafka.network:type=RequestMetrics,name=TotalTimeMs,request=Produce",
               attribute: {
                 Mean: {
                   metric_type: 'gauge',
@@ -112,8 +124,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.network\"",
-              bean: "\"kafka.network\":type=\"RequestMetrics\",name=\"Fetch-TotalTimeMs\"",
+              domain: "kafka.network",
+              bean: "kafka.network:type=RequestMetrics,name=TotalTimeMs,request=Fetch",
               attribute: {
                 Mean: {
                   metric_type: 'gauge',
@@ -128,8 +140,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.network\"",
-              bean: "\"kafka.network\":type=\"RequestMetrics\",name=\"UpdateMetadata-TotalTimeMs\"",
+              domain: "kafka.network",
+              bean: "kafka.network:type=RequestMetrics,name=TotalTimeMs,request=UpdateMetadata",
               attribute: {
                 Mean: {
                   metric_type: 'gauge',
@@ -144,8 +156,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.network\"",
-              bean: "\"kafka.network\":type=\"RequestMetrics\",name=\"Metadata-TotalTimeMs\"",
+              domain: "kafka.network",
+              bean: "kafka.network:type=RequestMetrics,name=TotalTimeMs,request=Metadata",
               attribute: {
                 Mean: {
                   metric_type: 'gauge',
@@ -160,8 +172,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.network\"",
-              bean: "\"kafka.network\":type=\"RequestMetrics\",name=\"Offsets-TotalTimeMs\"",
+              domain: "kafka.network",
+              bean: "kafka.network:type=RequestMetrics,name=TotalTimeMs,request=Offsets",
               attribute: {
                 Mean: {
                   metric_type: 'gauge',
@@ -176,8 +188,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"ReplicaManager\",name=\"ISRShrinksPerSec\"",
+              domain: "kafka.server",
+              bean: "kafka.server:type=ReplicaManager,name=ISRShrinksPerSec",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -188,8 +200,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"ReplicaManager\",name=\"ISRExpandsPerSec\"",
+              domain: "kafka.server",
+              bean: "kafka.server:type=ReplicaManager,name=ISRExpandsPerSec",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -200,8 +212,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"ControllerStats\",name=\"LeaderElectionRateAndTimeMs\"",
+              domain: "kafka.controller",
+              bean: "kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -212,8 +224,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.server\"",
-              bean: "\"kafka.server\":type=\"ControllerStats\",name=\"UncleanLeaderElectionsPerSec\"",
+              domain: "kafka.controller",
+              bean: "kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
@@ -224,8 +236,8 @@ describe file(AGENT_CONFIG) do
           },
           {
             include: {
-              domain: "\"kafka.log\"",
-              bean: "\"kafka.log\":type=\"LogFlushStats\",name=\"LogFlushRateAndTimeMs\"",
+              domain: "kafka.log",
+              bean: "kafka.log:type=LogFlushStats,name=LogFlushRateAndTimeMs",
               attribute: {
                 MeanRate: {
                   metric_type: 'gauge',
